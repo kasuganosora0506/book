@@ -13,8 +13,8 @@
 		<form th:object="${Member}" method="post">
                 <table class="form_table">
                     <tr>
-                        <td valign="middle">会員ID:</td>
                         <td valign="middle">
+                        	<label for="member_Id">会員ID:</label>
                             <input th:field="*{member_Id}" type="text" class="inputgri" name="member_Id"/>
                         </td>
                         <td valign="middle">
@@ -22,45 +22,44 @@
                         </td>
                     </tr>
                      <tr>
-                        <td valign="middle">会員氏(漢字):</td>
                         <td valign="middle">
+                        	<label for="member_Family_Name">会員氏(漢字):</label>
                             <input th:field="*{member_Family_Name}" type="text" class="inputgri" name="member_Family_Name"/>
                         </td>
-                        <td valign="middle">会員氏（カナ）:</td>
                         <td valign="middle">
+                        	<label for="member_Family_Name_Kana">会員氏（カナ）:</label>
                             <input th:field="*{member_Family_Name_Kana}" type="text" class="inputgri" name="member_Family_Name_Kana"/>
                         </td>
                     </tr>
                     <tr>
-                        <td valign="middle">会員名(漢字):</td>
                         <td valign="middle">
+                        	<label for="member_First_Name">会員名(漢字):</label>
                             <input th:field="*{member_First_Name}" type="text" class="inputgri" name="member_First_Name"/>
                         </td>
-                        <td valign="middle">会員名（カナ）:</td>
                         <td valign="middle">
+                        	<label for="member_First_Name_Kana">会員名（カナ）:</label>
                             <input th:field="*{member_First_Name_Kana}" type="text" class="inputgri" name="member_First_Name_Kana"/>
                         </td>
                     </tr>
                     <tr>
-                        <td valign="middle">住所:</td>
                         <td valign="middle">
+                        	<label for="address">住所:</label>
                             <input th:field="*{address}" type="text" class="inputgri" name="address"/>
                         </td>
                     </tr>
                     <tr>
-                        <td valign="middle">生年月日(西暦):</td>
                         <td valign="middle">
+                        	<label for="birth_Day_Year">生年月日(西暦):</label>
                             <input type="text" class="inputgri" name="birth_Day_Year"/>
                         </td>
-                        <td valign="middle">年</td>
                         <td valign="middle">
+                        	<label for="birth_Day_Month">年</label>
                             <input type="text" class="inputgri" name="birth_Day_Month"/>
-                        </td>
-                        <td valign="middle">月</td>
-                        <td valign="middle">
+                             
+                        	<label for="birth_Day_Day">月</label>
                             <input type="text" class="inputgri" name="birth_Day_Day"/>
-                        </td>
-                        <td valign="middle">日</td>
+                            <span>日</span>
+						</td>
                     </tr>
                     
                 </table>
