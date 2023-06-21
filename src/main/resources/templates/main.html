@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thyemleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script th:src="@{js/jquery/jquery-3.7.0.min.js}"></script>
+
+</head>
+<body>
+	<div>
+		<p>メニュー画面</p>
+			<div>
+				<input type="button" onclick="location.href='/main/member'" value="会員マスタメンテ">
+				<input type="button" onclick="location.href='/main/lent'" value="貸出">
+			</div>
+			<div>
+				<input type="button" onclick="location.href='/main/book'" value="本マスタメンテ" >
+				<input type="button" onclick="location.href='/main/back'" value="返却">
+			</div>
+	</div>
+</body>
+</html>

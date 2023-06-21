@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:util="urn:java.util">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script th:src="@{/js/jquery/jquery-3.7.0.min.js}"></script>
+
+</head>
+<body>
+	<div>
+		<p>会員マスタメンテ</p>
+		<form th:object="${Member}" method="post">
+                <table class="form_table">
+                    <tr>
+                        <td valign="middle">会員ID:</td>
+                        <td valign="middle">
+                            <input th:field="*{member_Id}" type="text" class="inputgri" name="member_Id"/>
+                        </td>
+                        <td valign="middle">
+                            <button type="submit" class="button" formaction="/main/member/search">検索</button>
+                        </td>
+                    </tr>
+                     <tr>
+                        <td valign="middle">会員氏(漢字):</td>
+                        <td valign="middle">
+                            <input th:field="*{member_Family_Name}" type="text" class="inputgri" name="member_Family_Name"/>
+                        </td>
+                        <td valign="middle">会員氏（カナ）:</td>
+                        <td valign="middle">
+                            <input th:field="*{member_Family_Name_Kana}" type="text" class="inputgri" name="member_Family_Name_Kana"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td valign="middle">会員名(漢字):</td>
+                        <td valign="middle">
+                            <input th:field="*{member_First_Name}" type="text" class="inputgri" name="member_First_Name"/>
+                        </td>
+                        <td valign="middle">会員名（カナ）:</td>
+                        <td valign="middle">
+                            <input th:field="*{member_First_Name_Kana}" type="text" class="inputgri" name="member_First_Name_Kana"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td valign="middle">住所:</td>
+                        <td valign="middle">
+                            <input th:field="*{address}" type="text" class="inputgri" name="address"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td valign="middle">生年月日(西历):</td>
+                        <td valign="middle">
+                            <input type="text" class="inputgri" name="birth_Day_Year"/>
+                        </td>
+                        <td valign="middle">年</td>
+                        <td valign="middle">
+                            <input type="text" class="inputgri" name="birth_Day_Month"/>
+                        </td>
+                        <td valign="middle">月</td>
+                        <td valign="middle">
+                            <input type="text" class="inputgri" name="birth_Day_Day"/>
+                        </td>
+                        <td valign="middle">日</td>
+                    </tr>
+                    
+                </table>
+                    <button type="submit" class="button" formaction="/main/member/append">追加</button>
+                    <button type="submit" class="button" formaction="/main/member/update">更新</button>
+                    <button type="submit" class="button" formaction="/main/member/delete">削除</button>
+                    <input type="button" class="button" value="クリア"/>
+            </form>		
+	</div>
+</body>
+</html>

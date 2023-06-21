@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- S01ログイン画面Mapper -->
+<mapper namespace="com.example.book.dao.LoginDao">
+	<!-- ログインボタン押下際 -->
+	<select id="login" resultType="Login">
+		select admin_id,
+		       password
+		from   tbl_admin
+		where  admin_id=#{admin_id}  
+		       and password = #{password}
+	</select>
+</mapper>
