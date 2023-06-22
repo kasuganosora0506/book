@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.example.book.bean.Book;
 import com.example.book.bean.Member;
 
 @Controller
@@ -19,7 +20,9 @@ public class MainController {
 	}
 	
 	@GetMapping("/lent")
-	public String lent() {
+	public String lent(Model model) {
+		Book book = new Book();
+		model.addAttribute("Book",book);
 		return "lent";
 	}
 	

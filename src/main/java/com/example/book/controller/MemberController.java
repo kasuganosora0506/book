@@ -1,6 +1,8 @@
 package com.example.book.controller;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 import org.apache.ibatis.annotations.Param;
@@ -30,7 +32,7 @@ public class MemberController {
 	public String append(@RequestParam("birth_Day_Year")String year,
 						@RequestParam("birth_Day_Month")String month,
 						@RequestParam("birth_Day_Day")String day,
-						@ModelAttribute Member member) {
+						@ModelAttribute("member")Member member) {
 		String birthday = year + "-" + month + "-" + day;
 	
 		member.setBirth_Day(birthday);
@@ -70,9 +72,19 @@ public class MemberController {
 						 Model model){
 		
 		Member member = memberService.search(member_Id);
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		if (member == null) {
 			member = new Member();
 		}
+
+		LocalDate birthday = LocalDate.parse(member.getBirth_Day(), formatter);
+		int birth_Day_Year = birthday.getYear();
+		int birth_Day_Month = birthday.getMonthValue();
+		int birth_Day_Day = birthday.getDayOfMonth();
+		
+		model.addAttribute("birth_Day_Year", birth_Day_Year);
+		model.addAttribute("birth_Day_Month", birth_Day_Month);
+		model.addAttribute("birth_Day_Day", birth_Day_Day);
 		model.addAttribute("Member", member);
 		return "member";
 	}

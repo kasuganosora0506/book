@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.book.dao.LentDao">
+	
+	<insert id="append" parameterType="Rental">
+		INSERT INTO public.tbl_rental( 
+    		member_id
+    		, book_id
+    		, rental_date
+    		, status
+    		, regist_id
+    		, regist_date
+    		, delete_flg
+		) 
+		VALUES ( 
+    		#{member_Id}
+    		, #{book_id}
+    		, TO_DATE(#{rental_date}, 'YYYY-MM-DD'),
+    		, #{status}
+    		, #{regist_id}
+    		, TO_TIMESTAMP(#{regist_Date}, 'YYYY-MM-DD HH24:MI:SS')
+    		, #{delete_flg}
+		)
+	</insert>
+	
+	<update id="update" parameterType="Rental">
+<!-- 		UPDATE public.tbl_member  -->
+<!-- 		SET -->
+<!-- 			member_id = #{member_Id} -->
+<!--     		, member_family_name = #{member_Family_Name} -->
+<!--     		, member_family_name_kana = #{member_Family_Name_Kana} -->
+<!--     		, member_first_name = #{member_First_Name} -->
+<!--     		, member_first_name_kana = #{member_First_Name_Kana} -->
+<!--     		, address = #{address} -->
+<!--     		, birth_day = TO_DATE(#{birth_Day}, 'YYYY-MM-DD') -->
+<!--     		, update_id = #{update_Id} -->
+<!--     		, update_date = TO_TIMESTAMP(#{update_Date}, 'YYYY-MM-DD HH24:MI:SS')  -->
+<!-- 		WHERE -->
+<!--     		member_id = #{member_Id} -->
+	</update>
+	
+	
+	<select id="search" resultType="Book">
+		select * from public.tbl_book
+		where  book_id = #{book_Id} and delete_Flg = '0'
+	</select>
+	
+	<select id="searchRental" resultType="Rental">
+		select * from public.tbl_tbl_rental
+		where  book_id = #{book_Id} and delete_Flg = '0'
+	</select>
+</mapper>

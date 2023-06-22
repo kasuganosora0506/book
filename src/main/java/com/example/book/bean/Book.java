@@ -9,21 +9,17 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class Member {
+public class Book {
 	
-	private String member_Id;
+	private String book_Id;
 	
-	private String member_Family_Name;
+	private String book_Title;
 	
-	private String member_Family_Name_Kana;
+	private String author_Name;
 	
-	private String member_First_Name;
+	private String publiSher;
 	
-	private String member_First_Name_Kana;
-	
-	private String address;
-	
-	private String birth_Day;
+	private String publiCation_Day;
 	
 	private String regist_Id;
 	
@@ -34,6 +30,5 @@ public class Member {
 	private String update_Date;
 	
 	private String delete_Flg;
-	
 
 }
