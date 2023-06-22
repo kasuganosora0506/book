@@ -8,75 +8,61 @@
 
 <title>会員マスタメンテ</title>
 
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css"/>
+<link rel="stylesheet" type="text/css" href="/css/member.css"/>
 
 <script th:src="@{/js/jquery/jquery-3.7.0.min.js}"></script>
 
+
 </head>
 <body>
-	<div>
-		<p>会員マスタメンテ</p>
-		
-		
+	<div class="main">
+		<h2>会員マスタメンテ</h2>
 		<form th:object="${Member}" method="post">
-                <table class="form_table">
-                    <tr>
-                    
-                    <p>123</p>
-                        <td valign="middle">
-                        	<label for="member_Id">会員ID:</label>
-                            <input th:field="*{member_Id}" type="text" class="inputgri" name="member_Id"/>
-                        </td>
-                        <td valign="middle">
-                            <button type="submit" class="button" formaction="/main/member/search">検索</button>
-                        </td>
-                    </tr>
-                     <tr>
-                        <td valign="middle">
-                        	<label for="member_Family_Name">会員氏(漢字):</label>
-                            <input th:field="*{member_Family_Name}" type="text" class="inputgri" name="member_Family_Name"/>
-                        </td>
-                        <td valign="middle">
-                        	<label for="member_Family_Name_Kana">会員氏（カナ）:</label>
-                            <input th:field="*{member_Family_Name_Kana}" type="text" class="inputgri" name="member_Family_Name_Kana"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td valign="middle">
-                        	<label for="member_First_Name">会員名(漢字):</label>
-                            <input th:field="*{member_First_Name}" type="text" class="inputgri" name="member_First_Name"/>
-                        </td>
-                        <td valign="middle">
-                        	<label for="member_First_Name_Kana">会員名（カナ）:</label>
-                            <input th:field="*{member_First_Name_Kana}" type="text" class="inputgri" name="member_First_Name_Kana"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td valign="middle">
-                        	<label for="address">住所:</label>
-                            <input th:field="*{address}" type="text" class="inputgri" name="address"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td valign="middle">
-                        	<label for="birth_Day_Year">生年月日(西暦):</label>
-                            <input type="text" class="inputgri" name="birth_Day_Year"/>
-                        </td>
-                        <td valign="middle">
-                        	<label for="birth_Day_Month">年</label>
-                            <input type="text" class="inputgri" name="birth_Day_Month"/>
+		<div>                    
+			<div class="form-group">                        
+				<label for="member_Id">会員ID:</label>
+				<input th:field="*{member_Id}" type="text" class="form-control" name="member_Id"/>
+				<button type="submit" class="btn btn-default" formaction="/main/member/search">検索</button>
+            </div>
+		</div>       
+		  
+            <div class="form-group">
+            	<label for="member_Family_Name">会員氏(漢字):</label>
+                <input th:field="*{member_Family_Name}" type="text" class="form-control" name="member_Family_Name"/>
+                
+                <label for="member_Family_Name_Kana">会員氏（カナ）:</label>
+                <input th:field="*{member_Family_Name_Kana}" type="text" class="form-control" name="member_Family_Name_Kana"/>
+            </div> 
+            <div class="form-group">
+            	<label for="member_First_Name">会員名(漢字):</label>
+                <input th:field="*{member_First_Name}" type="text" class="form-control" name="member_First_Name"/>
+                      
+                <label for="member_First_Name_Kana">会員名（カナ）:</label>
+                <input th:field="*{member_First_Name_Kana}" type="text" class="form-control" name="member_First_Name_Kana"/>
+            </div>
+            <div class="form-group">
+            	<label for="address">住所:</label>
+                <input th:field="*{address}" type="text" class="form-control" name="address"/>
+            </div>
+            <div class="form-group">
+            	<label for="birth_Day_Year">生年月日(西暦):</label>
+                <input type="text" class="form-control" name="birth_Day_Year"/>
+                        
+                <label for="birth_Day_Month">年</label>
+                <input type="text" class="form-control" name="birth_Day_Month"/>
                              
-                        	<label for="birth_Day_Day">月</label>
-                            <input type="text" class="inputgri" name="birth_Day_Day"/>
-                            <span>日</span>
-						</td>
-                    </tr>
-                    
-                </table>
-                    <button type="submit" class="button" formaction="/main/member/append">追加</button>
-                    <button type="submit" class="button" formaction="/main/member/update">更新</button>
-                    <button type="submit" class="button" formaction="/main/member/delete">削除</button>
-                    <input type="button" class="button" value="クリア"/>
-            </form>		
+                <label for="birth_Day_Day">月</label>
+                <input type="text" class="form-control" name="birth_Day_Day"/>
+                <span>日</span>
+            </div>
+            <div class="form-group">
+            	<button type="submit" class="btn btn-default" formaction="/main/member/append">追加</button>
+                <button type="submit" class="btn btn-default" formaction="/main/member/update">更新</button>
+                <button type="submit" class="btn btn-default" formaction="/main/member/delete">削除</button>
+                <input type="button" class="btn btn-default" value="クリア"/>
+            </div>
+		</form>		
 	</div>
 </body>
 </html>

@@ -1,0 +1,16 @@
+.main {
+	text-align: center;
+	width: 1000px;
+	height: 600px;
+ 	margin: auto; 
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+
+.form-control {
+	width: 100px;
+	display: inline-block;
+}

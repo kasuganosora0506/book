@@ -1,26 +1,31 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thyemleaf.org">
 <head>
-<meta charset="UTF-8">
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
 <title>ログイン画面</title>
 
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css"/>
+<link rel="stylesheet" type="text/css" href="/css/login.css"/>
 <script th:src="@{js/jquery/jquery-3.7.0.min.js}"></script>
 
 </head>
 <body>
-	<div>
-		<p>ログイン画面</p>
+	<div class="main">
+		<h1>ログイン画面</h1>
 		<form th:action="@{/login}" id="form" method="post">
-			<div>
-				<p>管理者ID：</p>
-				<input type="text" name="admin_id">
-			</div>
-			<div>
-				<p>パスワード：</p>
-				<input type="text" name="password">
+			<div class="form-group">
+				<label for="admin_id">管理者ID：</label>
+				<input type="text" class="form-control" name="admin_id">
+
+				<label for="password">パスワード：</label>
+				<input type="password" class="form-control" name="password">
 			</div>
 			
-			<input type="submit" value="ログイン">
+			<input type="submit" class="btn btn-default" value="ログイン">
 		</form>
 	</div>
 </body>
