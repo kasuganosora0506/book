@@ -15,11 +15,13 @@
 <body>
 	<div>
 		<p>会員マスタメンテ</p>
-		<p>123</p>
+		
 		
 		<form th:object="${Member}" method="post">
                 <table class="form_table">
                     <tr>
+                    
+                    <p>123</p>
                         <td valign="middle">
                         	<label for="member_Id">会員ID:</label>
                             <input th:field="*{member_Id}" type="text" class="inputgri" name="member_Id"/>
