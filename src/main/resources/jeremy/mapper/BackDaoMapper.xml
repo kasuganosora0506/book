@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.book.dao.BackDao">
+	
+	<update id="update" parameterType="java.util.List">
+		<foreach collection="list" item="rentals" separator=";">
+		UPDATE book.tbl_rental 
+		SET
+    		return_date = TO_DATE(#{rentals.return_Date}, 'YYYY-MM-DD')
+    		, status = CAST(#{rentals.status} AS INTEGER)
+    		, update_id = #{rentals.update_Id}
+    		, update_date = TO_TIMESTAMP(#{rentals.update_Date}, 'YYYY-MM-DD HH24:MI:SS')
+		WHERE
+    		member_id = #{rentals.member_Id} AND
+    		delete_flg = '0' AND
+    		book_id = #{rentals.book_Id}
+    	</foreach>
+	</update>
+	
+	<select id="search" resultType="Back">
+		SELECT member_id,tr.book_id,book_title
+		FROM book.tbl_rental AS tr
+		INNER JOIN book.tbl_book AS tb ON tr.book_id = tb.book_id
+		WHERE 	tr.status = 1 AND 
+				tr.delete_flg = '0' AND 
+				tb.delete_flg = '0' AND 
+				member_id = #{member_Id};
+	</select>
+</mapper>

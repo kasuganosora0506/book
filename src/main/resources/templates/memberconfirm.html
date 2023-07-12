@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:util="urn:java.util">
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>会員マスタメンテ確認</title>
+
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css"/>
+<link rel="stylesheet" type="text/css" href="/css/member.css"/>
+
+<script th:src="@{/js/jquery/jquery-3.7.0.min.js}"></script>
+
+
+</head>
+<body>
+	<div class="main">
+		<h2>会員マスタメンテ確認</h2>
+		<a href="/main/signout">ログアウト</a>
+		<a href="/main/init">戻る</a>
+		<form th:object="${Member}" method="post" id="mainForm">
+		<div>                    
+			<div class="form-group">                        
+				<label for="member_Id">会員ID:</label>
+				<input th:field="*{member_Id}" type="text" class="form-control" disabled/>
+				<input th:field="*{member_Id}" type="hidden" name="member_Id"/>
+            </div>
+		</div>       
+		  
+            <div class="form-group">
+            	<label for="member_Family_Name">会員氏(漢字):</label>
+                <input th:field="*{member_Family_Name}" type="text" class="form-control" name="member_Family_Name" disabled/>
+                <input th:field="*{member_Family_Name}" type="hidden" name="member_Family_Name"/>
+                
+                <label for="member_Family_Name_Kana">会員氏（カナ）:</label>
+                <input th:field="*{member_Family_Name_Kana}" type="text" class="form-control" name="member_Family_Name_Kana" disabled/>
+                <input th:field="*{member_Family_Name_Kana}" type="hidden" name="member_Family_Name_Kana"/>
+            </div> 
+            <div class="form-group">
+            	<label for="member_First_Name">会員名(漢字):</label>
+                <input th:field="*{member_First_Name}" type="text" class="form-control" name="member_First_Name" disabled/>
+                <input th:field="*{member_First_Name}" type="hidden" name="member_First_Name"/>
+                      
+                <label for="member_First_Name_Kana">会員名（カナ）:</label>
+                <input th:field="*{member_First_Name_Kana}" type="text" class="form-control" name="member_First_Name_Kana" disabled/>
+                <input th:field="*{member_First_Name_Kana}" type="hidden" name="member_First_Name_Kana"/>
+            </div>
+            <div class="form-group">
+            	<label for="address">住所:</label>
+                <input th:field="*{address}" type="text" class="form-control" name="address" disabled/>
+                <input th:field="*{address}" type="hidden" name="address"/>
+            </div>
+            <div class="form-group">
+            	<label for="birth_Day_Year">生年月日(西暦):</label>
+                <input th:value="${birth_Day_Year}" type="text" class="form-control" name="birth_Day_Year" disabled/>
+				<input th:value="${birth_Day_Year}" type="hidden" name="birth_Day_Year"/>
+                       
+                <label for="birth_Day_Month">年</label>
+                <input th:value="${birth_Day_Month}" type="text" class="form-control" name="birth_Day_Month" disabled/>
+                <input th:value="${birth_Day_Month}" type="hidden" name="birth_Day_Month"/>
+                             
+                <label for="birth_Day_Day">月</label>
+                <input th:value="${birth_Day_Day}" type="text" class="form-control" name="birth_Day_Day" disabled/>
+                <input th:value="${birth_Day_Day}" type="hidden" name="birth_Day_Day"/>
+                <span>日</span>
+            </div>
+            <div class="form-group">
+            	<button type="submit" class="btn btn-default" formaction="/main/member/appendconfirm">追加</button>
+                <button type="submit" class="btn btn-default" formaction="/main/member/updateconfirm">更新</button>
+                <button type="submit" class="btn btn-default" formaction="/main/member/delete">削除</button>
+            </div>
+		</form>		
+	</div>
+	<script th:src="@{/js/memberconfirm.js}"></script>
+</body>
+</html>

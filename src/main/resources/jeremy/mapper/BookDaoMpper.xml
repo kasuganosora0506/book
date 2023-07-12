@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- S01ログイン画面Mapper -->
+<mapper namespace="com.example.book.dao.BookDao">
+	<!-- ログインボタン押下際 -->
+	<insert id="append" parameterType="Book">
+		INSERT INTO book.tbl_book(
+			 book_id                                     
+    		, book_title                                
+    		, author_name                               
+    		, publisher                                 
+    		, publication_day                           
+    		, regist_id                                 
+    		, regist_date                               
+    		, delete_flg 
+		)VALUES ( 
+			#{book_Id},
+			#{book_Title},
+			#{author_Name},
+			#{publiSher},
+			TO_DATE(#{publiCation_Day}, 'YYYY-MM-DD'),
+			#{regist_Id},
+			TO_TIMESTAMP(#{regist_Date}, 'YYYY-MM-DD HH24:MI:SS'),
+			#{delete_Flg}
+		)
+	</insert>
+	
+	<update id="update" parameterType="Book">
+		UPDATE book.tbl_book 
+		SET
+			book_id = #{book_Id}
+    		, book_title = #{book_Title}
+    		, author_name = #{author_Name}
+    		, publisher = #{publiSher}
+    		, publication_day = TO_DATE(#{publiCation_Day}, 'YYYY-MM-DD')
+    		, update_id = #{update_Id}
+    		, update_date = TO_TIMESTAMP(#{update_Date}, 'YYYY-MM-DD HH24:MI:SS')
+		WHERE
+    		book_id = #{book_Id}
+	</update>
+	
+	<update id="delete" parameterType="Book">
+		UPDATE book.tbl_book 
+		SET
+    		update_id = #{update_Id}
+    		, update_date = TO_TIMESTAMP(#{update_Date}, 'YYYY-MM-DD HH24:MI:SS')
+    		, delete_Flg = #{delete_Flg} 
+		WHERE
+    		book_id = #{book_Id}
+	</update>
+	
+	<select id="search" resultType="Book">
+		select * from book.tbl_book
+		where  book_id = #{book_Id} and delete_Flg = '0'
+	</select>
+</mapper>
