@@ -39,7 +39,6 @@ public class MemberInfo_Controller {
 		model.addAttribute("birth_Day_Day", day);
 		
 		model.addAttribute("Member", member);
-
 		return "memberconfirm"; 
 	}
 	
