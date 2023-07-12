@@ -9,17 +9,17 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class Rental {
-	
-	private String member_Id;
+public class BookInfo_Bean {
 	
 	private String book_Id;
 	
-	private String rental_Date;
+	private String book_Title;
 	
-	private String return_Date;
+	private String author_Name;
 	
-	private String status;
+	private String publiSher;
+	
+	private String publiCation_Day;
 	
 	private String regist_Id;
 	

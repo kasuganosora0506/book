@@ -18,6 +18,8 @@
 <body>
 	<div class="main">
 		<h2>貸出画面</h2>
+		<a href="/main/signout">ログアウト</a>
+		<a href="/main/init">戻る</a>
 		<form th:object="${Book}" method="post">
                    
 			<div class="form-group">                        
@@ -34,7 +36,7 @@
             <div class="form-group">                        
 				<label for="member_Id">会員ID:</label>
 				<input  type="text" class="form-control" name="member_Id"/>
-				<button type="submit" class="btn btn-default" formaction="/main/member/search">貸出</button>
+				<button type="submit" class="btn btn-default" formaction="/main/lent/lent">貸出</button>
             </div>
             
 		</form>		

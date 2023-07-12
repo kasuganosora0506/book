@@ -1,10 +1,61 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:util="urn:java.util">
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>返却画面</title>
+
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css"/>
+<link rel="stylesheet" type="text/css" href="/css/member.css"/>
+
+<script th:src="@{/js/jquery/jquery-3.7.0.min.js}"></script>
+
+
 </head>
 <body>
-	<p>this is a back</p>
+	<div class="main">
+		<h2>返却画面</h2>
+		<a href="/main/signout">ログアウト</a>
+		<a href="/main/init">戻る</a>
+		<form th:object="${Member}" method="post">
+
+            <div class="form-group">                        
+				<label for="member_Id">会員ID:</label>
+				<input  th:field="*{member_Id}" type="text" class="form-control" name="member_Id"/>
+				<button type="submit" class="btn btn-default" formaction="/main/back/search">検索</button>
+            </div>
+            
+            <label for="maintable">貸出一覧：</label>
+            <table class="table table-bordered">
+				
+				<thead>
+					<th>返却</th>
+					<th>本ID</th>
+					<th>本タイトル</th>
+				</thead>
+				<tbody>
+					<tr th:each="rental : ${rentals}">
+						<td>
+							<input type="checkbox" th:name="'selectedItems'" th:value="${rental.book_Id}"/>
+						</td>
+						<td>
+							<span th:text="${rental.book_Id}"></span>
+						</td>
+						<td>
+							<span th:text="${rental.book_Title}"></span>
+						</td>
+					</tr>
+				</tbody>				
+			</table>
+            
+            <div class="form-group">
+				<button type="submit" class="btn btn-default" formaction="/main/back/update">返却</button>
+            </div>
+		</form>		
+	</div>
+
 </body>
 </html>

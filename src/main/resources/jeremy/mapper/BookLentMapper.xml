@@ -3,7 +3,7 @@
 <mapper namespace="com.example.book.dao.LentDao">
 	
 	<insert id="append" parameterType="Rental">
-		INSERT INTO public.tbl_rental( 
+		INSERT INTO book.tbl_rental( 
     		member_id
     		, book_id
     		, rental_date
@@ -14,39 +14,22 @@
 		) 
 		VALUES ( 
     		#{member_Id}
-    		, #{book_id}
-    		, TO_DATE(#{rental_date}, 'YYYY-MM-DD'),
-    		, #{status}
-    		, #{regist_id}
+    		, #{book_Id}
+    		, TO_DATE(#{rental_Date}, 'YYYY-MM-DD')	
+    		, CAST(#{status} AS INTEGER)
+    		, #{regist_Id}
     		, TO_TIMESTAMP(#{regist_Date}, 'YYYY-MM-DD HH24:MI:SS')
-    		, #{delete_flg}
+    		, #{delete_Flg}
 		)
 	</insert>
 	
-	<update id="update" parameterType="Rental">
-<!-- 		UPDATE public.tbl_member  -->
-<!-- 		SET -->
-<!-- 			member_id = #{member_Id} -->
-<!--     		, member_family_name = #{member_Family_Name} -->
-<!--     		, member_family_name_kana = #{member_Family_Name_Kana} -->
-<!--     		, member_first_name = #{member_First_Name} -->
-<!--     		, member_first_name_kana = #{member_First_Name_Kana} -->
-<!--     		, address = #{address} -->
-<!--     		, birth_day = TO_DATE(#{birth_Day}, 'YYYY-MM-DD') -->
-<!--     		, update_id = #{update_Id} -->
-<!--     		, update_date = TO_TIMESTAMP(#{update_Date}, 'YYYY-MM-DD HH24:MI:SS')  -->
-<!-- 		WHERE -->
-<!--     		member_id = #{member_Id} -->
-	</update>
-	
-	
 	<select id="search" resultType="Book">
-		select * from public.tbl_book
+		select * from book.tbl_book
 		where  book_id = #{book_Id} and delete_Flg = '0'
 	</select>
 	
 	<select id="searchRental" resultType="Rental">
-		select * from public.tbl_tbl_rental
-		where  book_id = #{book_Id} and delete_Flg = '0'
+		select * from book.tbl_rental
+		where book_id = #{book_Id} and delete_Flg = '0'
 	</select>
 </mapper>

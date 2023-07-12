@@ -6,7 +6,7 @@
 	<select id="login" resultType="Login">
 		select admin_id,
 		       password
-		from   tbl_admin
+		from   book.tbl_admin
 		where  admin_id=#{admin_id}  
 		       and password = #{password}
 	</select>

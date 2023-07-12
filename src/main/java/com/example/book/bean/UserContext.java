@@ -9,5 +9,12 @@ import lombok.Data;
 public class UserContext {
 	
 	private String login_Id;
-
+	
+	public boolean loginTest() {
+		if (login_Id == null) {
+			return false;
+		}else {
+			return true;
+		}
+	}
 }

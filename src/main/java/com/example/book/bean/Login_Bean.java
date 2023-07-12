@@ -9,7 +9,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class Login {
+public class Login_Bean {
 	
 	private String admin_id;
 	

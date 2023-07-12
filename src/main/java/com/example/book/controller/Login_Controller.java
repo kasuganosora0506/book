@@ -6,17 +6,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.example.book.bean.Login;
+import com.example.book.bean.Login_Bean;
 import com.example.book.bean.UserContext;
-import com.example.book.dao.LoginDao;
-import com.example.book.service.LoginService;
+import com.example.book.dao.Login_Dao;
+import com.example.book.service.Login_Service;
 
 @Controller
 @RequestMapping("/")
-public class LoginController {
+public class Login_Controller {
 	
 	@Autowired
-	private LoginService loginService;
+	private Login_Service loginService;
 	
 	@Autowired
 	private UserContext userContext;
@@ -28,11 +28,12 @@ public class LoginController {
 	
 	@PostMapping("login")
 	public String login(String admin_id,String password) {
-		Login login = loginService.login(admin_id, password);
+		Login_Bean login = loginService.login(admin_id, password);
 		if (login != null) {
 			if (login.getPassword().equals(password)) {
 				userContext.setLogin_Id(admin_id);
-				return "main";
+				System.out.println();
+				return "redirect:/main/init";
 			}else {
 				return "22A";
 			}	

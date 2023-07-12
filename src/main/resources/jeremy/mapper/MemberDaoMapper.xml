@@ -4,7 +4,7 @@
 <mapper namespace="com.example.book.dao.MemberDao">
 	<!-- ログインボタン押下際 -->
 	<insert id="append" parameterType="Member">
-		INSERT INTO public.tbl_member(
+		INSERT INTO book.tbl_member(
 			member_id
     		, member_family_name
     		, member_family_name_kana
@@ -30,7 +30,7 @@
 	</insert>
 	
 	<update id="update" parameterType="Member">
-		UPDATE public.tbl_member 
+		UPDATE book.tbl_member 
 		SET
 			member_id = #{member_Id}
     		, member_family_name = #{member_Family_Name}
@@ -46,7 +46,7 @@
 	</update>
 	
 	<update id="delete" parameterType="Member">
-		UPDATE public.tbl_member 
+		UPDATE book.tbl_member 
 		SET
     		update_id = #{update_Id}
     		, update_date = TO_TIMESTAMP(#{update_Date}, 'YYYY-MM-DD HH24:MI:SS')
@@ -56,7 +56,7 @@
 	</update>
 	
 	<select id="search" resultType="Member">
-		select * from public.tbl_member
-		where  member_id = #{member_Id}
+		select * from book.tbl_member
+		where  member_id = #{member_Id} and delete_Flg = '0'
 	</select>
 </mapper>

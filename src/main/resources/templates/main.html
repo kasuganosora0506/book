@@ -1,22 +1,31 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thyemleaf.org">
 <head>
-<meta charset="UTF-8">
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
 <title>メニュー画面</title>
 
-<script th:src="@{js/jquery/jquery-3.7.0.min.js}"></script>
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css"/>
+<link rel="stylesheet" type="text/css" href="/css/member.css"/>
+
+<script th:src="@{/js/jquery/jquery-3.7.0.min.js}"></script>
 
 </head>
 <body>
-	<div>
-		<p>メニュー画面</p>
+	<div class="main">
+		<h2>メニュー画面</h2>
+			<a href="/main/signout">ログアウト</a>
+		
 			<div>
-				<input type="button" onclick="location.href='/main/member'" value="会員マスタメンテ">
-				<input type="button" onclick="location.href='/main/lent'" value="貸出">
+				<input class="btn btn-default" type="button" onclick="location.href='/main/member'" value="会員マスタメンテ">
+				<input class="btn btn-default" type="button" onclick="location.href='/main/lent'" value="貸出">
 			</div>
 			<div>
-				<input type="button" onclick="location.href='/main/book'" value="本マスタメンテ" >
-				<input type="button" onclick="location.href='/main/back'" value="返却">
+				<input class="btn btn-default" type="button" onclick="location.href='/main/book'" value="本マスタメンテ" >
+				<input class="btn btn-default" type="button" onclick="location.href='/main/back'" value="返却">
 			</div>
 	</div>
 </body>

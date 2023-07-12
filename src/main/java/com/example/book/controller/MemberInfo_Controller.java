@@ -14,25 +14,40 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.example.book.bean.Member;
+import com.example.book.bean.MemberInfo_Bean;
 import com.example.book.bean.UserContext;
-import com.example.book.service.MemberService;
+import com.example.book.service.MemberInfo_Service;
 
 @Controller
 @RequestMapping("/main/member")
-public class MemberController {
+public class MemberInfo_Controller {
 	
 	@Autowired
-	private MemberService memberService;
+	private MemberInfo_Service memberService;
 	
 	@Autowired
 	private UserContext userContext;
 
-	@PostMapping("/append")
+	@PostMapping(value = {"append", "update"})
 	public String append(@RequestParam("birth_Day_Year")String year,
 						@RequestParam("birth_Day_Month")String month,
 						@RequestParam("birth_Day_Day")String day,
-						@ModelAttribute("member")Member member) {
+						@ModelAttribute("member")MemberInfo_Bean member,Model model) {
+		
+		model.addAttribute("birth_Day_Year", year);
+		model.addAttribute("birth_Day_Month", month);
+		model.addAttribute("birth_Day_Day", day);
+		
+		model.addAttribute("Member", member);
+
+		return "memberconfirm"; 
+	}
+	
+	@PostMapping("appendconfirm")
+	public String appendConfirm(@RequestParam("birth_Day_Year")String year,
+						@RequestParam("birth_Day_Month")String month,
+						@RequestParam("birth_Day_Day")String day,
+						@ModelAttribute("Member")MemberInfo_Bean member) {
 		String birthday = year + "-" + month + "-" + day;
 	
 		member.setBirth_Day(birthday);
@@ -40,41 +55,42 @@ public class MemberController {
 		member.setRegist_Date(date());
 		member.setDelete_Flg("0");
 		memberService.append(member);
-		return "redirect:/init"; 
+		return "updatesuccess"; 
 	}
 	
-	@PostMapping("update")
+	@PostMapping("updateconfirm")
 	public String update(@RequestParam("birth_Day_Year")String year,
 						@RequestParam("birth_Day_Month")String month,
 						@RequestParam("birth_Day_Day")String day,
-						@ModelAttribute Member member) {
+						@ModelAttribute MemberInfo_Bean member) {
 		String birthday = year + "-" + month + "-" + day;
 		
 		member.setBirth_Day(birthday);
 		member.setUpdate_Id(userContext.getLogin_Id());
 		member.setUpdate_Date(date());
 		memberService.update(member);
-		return "redirect:/init";
+		return "updatesuccess";
 	}
 	
 	@PostMapping("delete")
-	public String delete(@ModelAttribute Member member){
+	public String delete(@ModelAttribute MemberInfo_Bean member){
 
 		member.setDelete_Flg("1");
 		member.setUpdate_Id(userContext.getLogin_Id());
 		member.setUpdate_Date(date());
 		memberService.delete(member);
-		return "redirect:/init";
+		return "updatesuccess";
 	}
 	
 	@PostMapping("search")
 	public String search(@RequestParam("member_Id")String member_Id,
 						 Model model){
 		
-		Member member = memberService.search(member_Id);
+		MemberInfo_Bean member = memberService.search(member_Id);
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		
 		if (member == null) {
-			member = new Member();
+			member = new MemberInfo_Bean();
 		}
 
 		LocalDate birthday = LocalDate.parse(member.getBirth_Day(), formatter);
@@ -86,6 +102,7 @@ public class MemberController {
 		model.addAttribute("birth_Day_Month", birth_Day_Month);
 		model.addAttribute("birth_Day_Day", birth_Day_Day);
 		model.addAttribute("Member", member);
+		
 		return "member";
 	}
 	

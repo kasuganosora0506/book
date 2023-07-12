@@ -4,11 +4,11 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
-import com.example.book.bean.Login;
+import com.example.book.bean.Login_Bean;
 
 @Mapper
-public interface LoginDao {
+public interface Login_Dao {
 	
-	Login login(@Param("admin_id")String admin_id,@Param("password")String password);
+	Login_Bean login(@Param("admin_id")String admin_id,@Param("password")String password);
 
 }

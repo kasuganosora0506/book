@@ -11,22 +11,22 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.example.book.bean.Rental;
+import com.example.book.bean.Lend_Bean;
 import com.example.book.bean.UserContext;
-import com.example.book.bean.Book;
-import com.example.book.bean.Member;
-import com.example.book.service.LentService;
-import com.example.book.service.MemberService;
+import com.example.book.bean.BookInfo_Bean;
+import com.example.book.bean.MemberInfo_Bean;
+import com.example.book.service.Lend_Service;
+import com.example.book.service.MemberInfo_Service;
 
 @Controller	
 @RequestMapping("/main/lent")
-public class BookLentController {
+public class Lend_Controller {
 
 	@Autowired
-	private LentService lentService;
+	private Lend_Service lentService;
 	
 	@Autowired
-	private MemberService memberService;
+	private MemberInfo_Service memberService;
 	
 	@Autowired 
 	private UserContext userContext;
@@ -34,7 +34,7 @@ public class BookLentController {
 	@PostMapping("search")
 	public String search(@RequestParam("book_Id")String book_Id,
 			 			Model model) {
-		Book book = lentService.search(book_Id);
+		BookInfo_Bean book = lentService.search(book_Id);
 		if (book == null) {
 			return "22A";
 		}else {
@@ -46,18 +46,19 @@ public class BookLentController {
 	@PostMapping("lent")
 	public String search(@RequestParam("book_Id")String book_Id,
 						@RequestParam("member_Id")String member_Id){
-		Book book = lentService.search(book_Id);
+		BookInfo_Bean book = lentService.search(book_Id);
 		if (book == null) {
 			return "32A";
 		}else {
-			Member member = memberService.search(member_Id);
+			MemberInfo_Bean member = memberService.search(member_Id);
 			if (member == null) {
 				return "32B";
 			}else {
-				Rental rental = lentService.searchRental(book_Id);
+				Lend_Bean rental = lentService.searchRental(book_Id);
 				if (rental != null) {
 					return "32C";
 				}else {
+					rental = new Lend_Bean();
 					rental.setMember_Id(member_Id);
 					rental.setBook_Id(book_Id);
 					rental.setRental_Date(date());
@@ -66,7 +67,8 @@ public class BookLentController {
 					rental.setRegist_Date(date());
 					rental.setDelete_Flg("0");
 					lentService.append(rental);
-					return "lent";
+					System.out.println();
+					return "redirect:/init";
 				}
 			}
 
